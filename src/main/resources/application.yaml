@@ -29,14 +29,22 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: order
-          uri: http://cloud:8082
+        - id: reservation
+          uri: http://reservation:8080
           predicates:
-            - Path=/orders/**
-        - id: product
-          uri: http://cloud:8081
+            - Path=/reservations/**
+        - id: flight
+          uri: http://flight:8080
           predicates:
-            - Path=/products/**
+            - Path=/flights/**
+        - id: pay
+          uri: http://pay:8080
+          predicates:
+            - Path=/pays/** 
+        - id: cqrs
+          uri: http://cqrs:8080
+          predicates:
+            - Path=/cqrs/** 
 api:
   url:
     product: http://flights:8080
